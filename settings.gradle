@@ -1,0 +1,2 @@
+rootProject.name='MyTech'
+include ':app', ':arclibrary'

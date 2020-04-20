@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/bitmap"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    tools:context=".view.activity.RegisterActivity">
+    <ImageView
+        android:layout_width="@dimen/dp_64"
+        android:src="@mipmap/logo_xhdpi"
+        android:layout_marginTop="@dimen/dp_128"
+        android:layout_height="@dimen/dp_64"></ImageView>
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:src="@mipmap/register_icon_name_n_xxhdpi"></ImageView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="昵称"
+            android:textColorHint="#eeeeee"
+            android:id="@+id/register_name"
+            android:layout_height="wrap_content"></EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:src="@mipmap/login_icon_phone_n_xxhdpi"></ImageView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="手机号"
+            android:textColorHint="#eeeeee"
+            android:id="@+id/register_phone"
+            android:layout_height="wrap_content"></EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:src="@mipmap/login_icon_lock_n_xxhdpi"></ImageView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="登录密码"
+            android:textColorHint="#eeeeee"
+            android:id="@+id/register_pwd"
+            android:layout_height="wrap_content"></EditText>
+    </LinearLayout>
+</LinearLayout>
