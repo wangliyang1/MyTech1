@@ -8,40 +8,28 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     tools:context=".view.activity.LoginActivity">
-    <LinearLayout
-        android:layout_width="@dimen/dp_280"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/login_icon_phone_n_xxhdpi"></ImageView>
 
         <EditText
-            android:layout_width="match_parent"
-            android:hint="手机号"
+            android:drawableLeft="@mipmap/login_icon_phone_n_xxhdpi"
+            android:layout_width="@dimen/dp_280"
+            android:hint="手机号" android:layout_marginTop="150dp"
             android:textColorHint="#eeeeee"
             android:id="@+id/login_phone"
+            android:padding="@dimen/dp_10"
+            android:background="@drawable/edit_bei"
             android:layout_height="wrap_content"></EditText>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/login_icon_lock_n_xxhdpi"></ImageView>
+
 
         <EditText
-            android:layout_width="match_parent"
+            android:drawableLeft="@mipmap/login_icon_lock_n_xxhdpi"
+            android:layout_width="@dimen/dp_280"
             android:hint="登录密码"
+            android:padding="@dimen/dp_10"
+            android:background="@drawable/edit_bei"
+            android:layout_marginTop="@dimen/dp_40"
             android:textColorHint="#eeeeee"
             android:id="@+id/login_pwd"
             android:layout_height="wrap_content"></EditText>
-    </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

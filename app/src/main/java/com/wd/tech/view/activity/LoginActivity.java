@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.wd.tech.R;
 import com.wd.tech.api.MyUrls;
 import com.wd.tech.arc.LivenessActivity;
@@ -55,6 +57,8 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
 
     }
 
+
+
     @Override
     protected TechPresenter providePresenter() {
         return new TechPresenter();
@@ -91,6 +95,7 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
         switch (view.getId()) {
             case R.id.login_register://进入注册页面
                 startActivity(this,RegisterActivity.class);
+                finish();
                 break;
             case R.id.login_bt://发送登录请求
                 String phone = loginPhone.getText().toString().trim();

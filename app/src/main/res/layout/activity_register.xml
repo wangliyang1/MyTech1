@@ -21,12 +21,18 @@
         <ImageView
             android:layout_width="@dimen/dp_20"
             android:layout_height="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
             android:src="@mipmap/register_icon_name_n_xxhdpi"></ImageView>
 
         <EditText
             android:layout_width="match_parent"
             android:hint="昵称"
+            android:paddingLeft="@dimen/dp_5"
+            android:textColor="#eeeeee"
             android:textColorHint="#eeeeee"
+            android:layout_marginTop="@dimen/dp_9"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:background="@drawable/edit_bei"
             android:id="@+id/register_name"
             android:layout_height="wrap_content"></EditText>
     </LinearLayout>
@@ -37,14 +43,20 @@
         android:orientation="horizontal">
         <ImageView
             android:layout_width="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
             android:layout_height="@dimen/dp_20"
             android:src="@mipmap/login_icon_phone_n_xxhdpi"></ImageView>
 
         <EditText
             android:layout_width="match_parent"
             android:hint="手机号"
+            android:background="@drawable/edit_bei"
             android:textColorHint="#eeeeee"
+            android:textColor="#eeeeee"
+            android:paddingLeft="@dimen/dp_5"
             android:id="@+id/register_phone"
+            android:layout_marginTop="@dimen/dp_9"
+            android:layout_marginLeft="@dimen/dp_10"
             android:layout_height="wrap_content"></EditText>
     </LinearLayout>
     <LinearLayout
@@ -54,14 +66,39 @@
         android:orientation="horizontal">
         <ImageView
             android:layout_width="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
             android:layout_height="@dimen/dp_20"
             android:src="@mipmap/login_icon_lock_n_xxhdpi"></ImageView>
 
         <EditText
+
             android:layout_width="match_parent"
             android:hint="登录密码"
+            android:textColor="#eeeeee"
+            android:paddingLeft="@dimen/dp_5"
+            android:background="@drawable/edit_bei"
             android:textColorHint="#eeeeee"
+            android:layout_marginTop="@dimen/dp_9"
+            android:layout_marginLeft="@dimen/dp_10"
             android:id="@+id/register_pwd"
             android:layout_height="wrap_content"></EditText>
     </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="短信验证登录"
+        android:layout_marginTop="10dp"
+        android:id="@+id/login_register"
+        android:layout_marginLeft="100dp"
+        android:textColor="#ffffff"></TextView>
+    <Button
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:background="#20affa"
+        android:text="注册"
+        android:textSize="18dp"
+        android:layout_marginTop="180dp"
+        android:id="@+id/register_bt"
+        android:textColor="#ffffff"></Button>
 </LinearLayout>
