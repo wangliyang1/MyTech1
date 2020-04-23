@@ -1,6 +1,7 @@
 package com.wd.tech.contract;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.MultipartBody;
 
@@ -18,6 +19,8 @@ public interface IContract {
         void getNoParams(String url, Class cls);
         //get有参
         void getDoParams(String url, Class cls, HashMap<String, Object> map);
+        //get Header入参
+        void doGetHeaderParams(String url, Class cls, Map<String,Object> map);
         //post 头像
         void postDoHeadPic(String url, Class cls, MultipartBody.Part image);
         //post无参
@@ -38,6 +41,8 @@ public interface IContract {
         void getNoParams(String url, Class cls, IModelCallback iModelCallback);
         //get有参
         void getDoParams(String url, Class cls, HashMap<String, Object> map, IModelCallback iModelCallback);
+        //get Header入参
+        void doGetHeaderParams(String url,Class cls,Map<String,Object>map,IModelCallback modelCallback);
         //post 头像
         void postDoHeadPic(String url, Class cls, MultipartBody.Part image, IModelCallback iModelCallback);
         //post无参

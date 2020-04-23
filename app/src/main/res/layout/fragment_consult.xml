@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#f2f2f2"
     android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/dp_32"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:id="@+id/consult_menu"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/home_nav_btn_menu_n_xxhdpi"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dp_20"
+                    android:text="资讯"></TextView>
+                <ImageView
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
+                    android:id="@+id/consult_search"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/common_nav_btn_search_n_xxhdpi"></ImageView>
+            </RelativeLayout>
+            <com.stx.xhb.androidx.XBanner
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/dp_20"
+                app:pointsVisibility="false"
+                android:layout_height="@dimen/dp_160"
+                android:id="@+id/consult_xbanner"></com.stx.xhb.androidx.XBanner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/dp_10"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-30dp"
+                android:id="@+id/consult_banner_text"></TextView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_height="match_parent"
+                android:id="@+id/consult_recycler"></androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

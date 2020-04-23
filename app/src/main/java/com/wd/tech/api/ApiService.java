@@ -1,6 +1,7 @@
 package com.wd.tech.api;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
@@ -9,6 +10,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HeaderMap;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -22,6 +24,9 @@ public interface ApiService {
     Observable<ResponseBody> getNoParams(@Url String url);
     @GET //get有参
     Observable<ResponseBody> getDoParams(@Url String url, @QueryMap HashMap<String, Object> map);
+    //get Head入参
+    @GET
+    Observable<ResponseBody> doGetHeaderParams(@Url String url, @HeaderMap Map<String,Object> map);
     @POST //post头像
     @Multipart
     Observable<ResponseBody> postDoHeadPic(@Url String url, @Part MultipartBody.Part img);

@@ -1,6 +1,7 @@
 package com.wd.tech.view.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -47,6 +48,8 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
     @BindView(R.id.login_face)
     ImageView loginFace;
     String PHONE = "^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$";
+    private SharedPreferences.Editor sp;
+
     @Override
     protected void initData() {
 
@@ -54,7 +57,7 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
 
     @Override
     protected void initView() {
-
+        sp = getSharedPreferences("login.dp", MODE_PRIVATE).edit();
     }
 
 
@@ -78,7 +81,13 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
     @Override
     public void onSuccess(Object o) {
         if (o instanceof LoginBean && TextUtils.equals("0000", ((LoginBean) o).getStatus())) {
+            LoginBean.ResultBean result = ((LoginBean) o).getResult();
+            sp.putBoolean("b",true);
+            sp.putString("sid",result.getSessionId());
+            sp.putInt("uid",result.getUserId());
+            sp.commit();
             Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+            finish();
         } else {
             Toast.makeText(this, "登录失败", Toast.LENGTH_SHORT).show();
         }

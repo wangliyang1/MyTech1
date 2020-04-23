@@ -1,6 +1,7 @@
 package com.wd.tech.util;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -15,6 +16,7 @@ import com.wd.tech.api.MyUrls;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observer;
@@ -22,13 +24,18 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.Cache;
+import okhttp3.Interceptor;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class NetUtil {
 
@@ -52,13 +59,13 @@ public class NetUtil {
         //okhttp
         OkHttpClient okhttp = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
-                /*.addInterceptor(new Interceptor() {
+                .addInterceptor(new Interceptor() {
                     @Override
                     public Response intercept(Chain chain) throws IOException {
-                        SharedPreferences sp = MyApp.getmContext().getSharedPreferences("login.dp", MODE_PRIVATE);
+                        SharedPreferences sp = MyApp.mContext.getSharedPreferences("login.dp", MODE_PRIVATE);
                         if (sp.getBoolean("b",false)){
-                            sid = sp.getString("sid","");
-                            uid = sp.getInt("uid",-1);
+                           String sid = sp.getString("sid","");
+                           int uid = sp.getInt("uid",-1);
                             Request request = chain.request().newBuilder()
                                     .addHeader("userId", uid+"")
                                     .addHeader("sessionId", sid)
@@ -69,7 +76,7 @@ public class NetUtil {
                         }
 
                     }
-                })*/
+                })
                 //添加缓存
                 .addInterceptor(new CacheIntercept())
                 .cache(cache)
@@ -149,6 +156,41 @@ public class NetUtil {
                     @Override
                     public void onError(Throwable e) {
                         iCallback.onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    //get 头参
+    public void doGetHeaderParams(String url, Class cls, Map<String,Object> map, ICallback netCallbacK){
+        api.doGetHeaderParams(url,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Object o = new Gson().fromJson(string, cls);
+                            if (o != null){
+                                netCallbacK.onSuccess(o);
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        netCallbacK.onError(e);
                     }
 
                     @Override

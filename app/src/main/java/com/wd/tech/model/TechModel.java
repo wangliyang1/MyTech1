@@ -4,6 +4,7 @@ import com.wd.tech.contract.IContract;
 import com.wd.tech.util.NetUtil;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.MultipartBody;
 
@@ -34,6 +35,21 @@ public class TechModel implements IContract.IModel {
             @Override
             public void onError(Throwable e) {
                 iModelCallback.onFailure(e);
+            }
+        });
+    }
+
+    @Override
+    public void doGetHeaderParams(String url, Class cls, Map<String, Object> map, IContract.IModelCallback modelCallback) {
+        NetUtil.getInstance().doGetHeaderParams(url, cls, map, new NetUtil.ICallback() {
+            @Override
+            public void onSuccess(Object o) {
+                modelCallback.onSuccess(o);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                modelCallback.onFailure(e);
             }
         });
     }

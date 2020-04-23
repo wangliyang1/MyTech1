@@ -177,6 +177,7 @@ public class MainActivity extends BaseActivity<TechPresenter> {
             case R.id.login_iv:
                 break;
             case R.id.login:
+                startActivity(this,LoginActivity.class);
                 break;
         }
     }

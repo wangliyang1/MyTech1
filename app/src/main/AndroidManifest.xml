@@ -15,10 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.RegisterActivity"></activity>
-        <activity android:name=".view.activity.StartActivity"></activity>
-        <activity android:name=".view.activity.LoginActivity">
-        </activity>
+        <activity android:name=".view.consult.SearchActivity"></activity>
+        <activity android:name=".view.consult.ConsultSearchActivity" />
+        <activity android:name=".view.consult.ChannelActivity" />
+        <activity android:name=".view.consult.FindPlateActivity" />
+        <activity android:name=".view.consult.ConsultDetailsActivity" />
+        <activity android:name=".view.activity.RegisterActivity" />
+        <activity android:name=".view.activity.StartActivity" />
+        <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
