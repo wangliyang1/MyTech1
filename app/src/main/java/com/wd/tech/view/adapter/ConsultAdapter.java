@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.wd.tech.R;
 import com.wd.tech.bean.consult.RecommendListBean;
 import com.wd.tech.contract.OnRecyclerItemClickListener;
@@ -33,22 +34,25 @@ public class ConsultAdapter extends RecyclerView.Adapter<ConsultAdapter.Viewhold
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_consult_item,null);
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_consult_item, null);
         return new Viewholder(inflate);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         RecommendListBean.ResultBean resultBean = result.get(position);
-        if (resultBean.getWhetherAdvertising()==1){
+        if (resultBean.getWhetherAdvertising() == 1) {
             holder.itemRela1.setVisibility(View.VISIBLE);
             holder.itemRela2.setVisibility(View.GONE);
             RecommendListBean.ResultBean.InfoAdvertisingVoBean infoAdvertisingVo = resultBean.getInfoAdvertisingVo();
-            GlideUtils.getPhoto(infoAdvertisingVo.getPic(),holder.consultItemImage);
-        }else {
+            GlideUtils.getPhoto(infoAdvertisingVo.getPic(), holder.consultItemImage);
+        } else {
             holder.itemRela1.setVisibility(View.GONE);
             holder.itemRela2.setVisibility(View.VISIBLE);
-            GlideUtils.getPhoto(resultBean.getThumbnail(),holder.itemImage);
+            Glide.with(holder.itemView.getContext()).load(resultBean.getThumbnail())
+                    .placeholder(R.drawable.null_pho)
+                    .error(R.drawable.null_pho)
+                    .into(holder.itemImage);
             holder.itemTitle.setText(resultBean.getTitle());
 
             holder.itemSummary.setText(resultBean.getSummary());
@@ -59,18 +63,29 @@ public class ConsultAdapter extends RecyclerView.Adapter<ConsultAdapter.Viewhold
             String format = simpleDateFormat1.format(resultBean.getReleaseTime());
             holder.itemTime.setText(format);
 
-            holder.itemCollection.setText(resultBean.getCollection()+"");
-            holder.itemShare.setText(resultBean.getShare()+"");
+            holder.itemCollection.setText(resultBean.getCollection() + "");
+            holder.itemShare.setText(resultBean.getShare() + "");
+
+            if (resultBean.getWhetherPay()==1){
+                holder.itemCollectionPay.setVisibility(View.VISIBLE);
+            }else {
+                holder.itemCollectionPay.setVisibility(View.GONE);
+            }
+            if (resultBean.getWhetherCollection() == 1) {
+                holder.consultItemImage.setImageResource(R.drawable.guanzhu);
+            } else {
+                holder.consultItemImage.setImageResource(R.drawable.guanzhu_null);
+            }
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (resultBean.getWhetherAdvertising()==1){
+                if (resultBean.getWhetherAdvertising() == 1) {
                     RecommendListBean.ResultBean.InfoAdvertisingVoBean infoAdvertisingVo = resultBean.getInfoAdvertisingVo();
                     int id = infoAdvertisingVo.getId();
-                    listener.onItemClick(id+"");
-                }else {
-                    listener.onItemClick(resultBean.getId()+"");
+                    listener.onItemClick(id + "");
+                } else {
+                    listener.onItemClick(resultBean.getId() + "");
                 }
             }
         });
@@ -82,6 +97,8 @@ public class ConsultAdapter extends RecyclerView.Adapter<ConsultAdapter.Viewhold
     }
 
     class Viewholder extends RecyclerView.ViewHolder {
+        @BindView(R.id.item_collection_pay)
+        ImageView itemCollectionPay;
         @BindView(R.id.item_image)
         ImageView itemImage;
         @BindView(R.id.item_title)
@@ -112,9 +129,12 @@ public class ConsultAdapter extends RecyclerView.Adapter<ConsultAdapter.Viewhold
             ButterKnife.bind(this, itemView);
         }
     }
+
     OnRecyclerItemClickListener listener;
 
     public void setListener(OnRecyclerItemClickListener listener) {
         this.listener = listener;
     }
+
+
 }

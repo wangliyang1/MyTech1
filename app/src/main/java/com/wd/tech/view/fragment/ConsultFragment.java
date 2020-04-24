@@ -74,7 +74,7 @@ public class ConsultFragment extends BaseFragment<TechPresenter> {
             HashMap<String, Object> map = new HashMap<>();
             map.put("plateId",0);
             map.put("page",1);
-            map.put("count",5);
+            map.put("count",10);
             mPresenter.getDoParams(MyUrls.CONSULT_RECOMMEND_LIST, RecommendListBean.class,map);
 
 
