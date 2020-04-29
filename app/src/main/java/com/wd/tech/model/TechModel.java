@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class TechModel implements IContract.IModel {
     @Override
@@ -100,6 +101,21 @@ public class TechModel implements IContract.IModel {
     }
 
     @Override
+    public void postFileParams(String url, Class cls, HashMap<String, RequestBody> map, IContract.IModelCallback iModelCallback) {
+        NetUtil.getInstance().postFileParams(url, cls, map, new NetUtil.ICallback() {
+            @Override
+            public void onSuccess(Object o) {
+                iModelCallback.onSuccess(o);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                iModelCallback.onFailure(e);
+            }
+        });
+    }
+
+    @Override
     public void putNoParams(String url, Class cls, IContract.IModelCallback iModelCallback) {
         NetUtil.getInstance().putNoParams(url, cls, new NetUtil.ICallback() {
             @Override
@@ -147,6 +163,21 @@ public class TechModel implements IContract.IModel {
     @Override
     public void dltDoParams(String url, Class cls, HashMap<String, Object> map, IContract.IModelCallback iModelCallback) {
         NetUtil.getInstance().dltDoParams(url, cls, map,new NetUtil.ICallback() {
+            @Override
+            public void onSuccess(Object o) {
+                iModelCallback.onSuccess(o);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                iModelCallback.onFailure(e);
+            }
+        });
+    }
+
+    @Override
+    public void postweixin(String url, String ak, String code, Class cls, IContract.IModelCallback iModelCallback) {
+        NetUtil.getInstance().postweixin(url, cls, ak, code, new NetUtil.ICallback() {
             @Override
             public void onSuccess(Object o) {
                 iModelCallback.onSuccess(o);

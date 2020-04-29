@@ -3,4 +3,54 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp_20">
+
+
+    <RadioGroup
+        android:layout_height="@dimen/dp_30"
+        android:orientation="horizontal"
+        android:layout_width="@dimen/dp_160"
+        android:layout_centerInParent="true"
+        android:background="@drawable/style_message_select2"
+        android:id="@+id/info_rg">
+
+    <RadioButton
+        android:layout_height="@dimen/dp_30"
+        android:layout_width="@dimen/dp_80"
+        android:background="@drawable/message_checked"
+        android:id="@+id/info_message"
+        android:textColor="@drawable/textcolor"
+        android:checked="true"
+        android:gravity="center"
+        android:text="消息" android:button="@null"/>
+
+    <RadioButton android:layout_height="@dimen/dp_30"
+        android:layout_width="@dimen/dp_80"
+        android:background="@drawable/message_checked"
+        android:id="@+id/info_man"
+        android:textColor="@drawable/textcolor"
+        android:gravity="center"
+        android:text="联系人"
+        android:button="@null"/>
+
+</RadioGroup>
+
+    <ImageView
+        android:layout_height="@dimen/dp_20"
+        android:layout_width="@dimen/dp_20"
+        android:src="@mipmap/common_nav_btn_add_n_hdpi"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/info_vp"/>
 </LinearLayout>

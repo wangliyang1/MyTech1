@@ -21,6 +21,7 @@
                 <ImageView
                     android:layout_width="@dimen/dp_24"
                     android:layout_height="@dimen/dp_24"
+                    android:scaleType="fitXY"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:id="@+id/consult_menu"
                     android:layout_alignParentLeft="true"

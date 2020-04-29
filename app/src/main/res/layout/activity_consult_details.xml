@@ -61,13 +61,13 @@
                 android:text="尚未购买,付费再来阅读吧"
                 android:layout_marginTop="@dimen/dp_20"
                 android:layout_gravity="center"></Button>
-            <TextView
+            <WebView
                 android:id="@+id/details_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_12"
                 android:textColor="#666666"
-                android:textSize="12sp"></TextView>
+                android:textSize="12sp"></WebView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/details_plate"
@@ -113,6 +113,55 @@
         android:background="#f2f2f2"
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="#FFFFFF"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:id="@+id/details_pay_relalayout">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:text="请选择付费方式"
+                android:textColor="#666666"
+                android:id="@+id/pay_one"
+                android:layout_marginTop="@dimen/dp_30"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="让阅读随时随地"
+                android:textColor="#999999"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_below="@id/pay_one"
+                android:id="@+id/pay_two"></TextView>
+            <ImageView
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:id="@+id/pay_cancel"
+                android:src="@drawable/xiajiantou"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_alignParentRight="true"></ImageView>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_120"
+                android:src="@drawable/pay_jifen"
+                android:layout_below="@id/pay_two"
+                android:layout_marginTop="@dimen/dp_30"
+                android:id="@+id/pay_jifen"></ImageView>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_120"
+                android:src="@drawable/pay_huiyuan"
+                android:layout_below="@id/pay_jifen"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:id="@+id/pay_huiyuan"></ImageView>
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:id="@+id/details_lie"
@@ -187,6 +236,7 @@
                 android:text="10"
                 android:layout_marginTop="-10dp"></TextView>
         </LinearLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

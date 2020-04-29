@@ -3,6 +3,7 @@ package com.wd.tech.view.fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -71,6 +72,9 @@ public class ConsultFragment extends BaseFragment<TechPresenter> {
 
             int uid = sp.getInt("uid", -1);
             String sid = sp.getString("sid", "");
+            Log.i("TAG_ID",uid+"");
+            Log.i("TAG_ID",sid+"");
+
             HashMap<String, Object> map = new HashMap<>();
             map.put("plateId",0);
             map.put("page",1);

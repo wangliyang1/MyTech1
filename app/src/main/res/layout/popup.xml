@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="@dimen/dp_50">
+    <EditText
+        android:layout_width="@dimen/dp_220"
+        android:layout_height="@dimen/dp_40"
+        android:layout_centerVertical="true"
+        android:paddingLeft="6dp"
+        android:id="@+id/et"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:background="@drawable/plback"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_40"
+        android:text="发送"
+        android:id="@+id/bt"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@drawable/style_login_btn"
+        android:textColor="@color/colorWhite"/>
+</RelativeLayout>

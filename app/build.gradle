@@ -22,6 +22,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -33,6 +34,14 @@ android {
         main {
             jniLibs.srcDirs = ['libs']
             jni.srcDirs = []    //disable automatic ndk-build
+        }
+    }
+    signingConfigs { //在android代码块下写
+        debug {//这个地方可以写成 release
+            storeFile file('tech.keystore')
+            keyAlias "tech"
+            storePassword "123456"
+            keyPassword "123456"
         }
     }
 }
@@ -92,4 +101,14 @@ dependencies {
     implementation 'com.github.zrunker:ZFlowLayout:v1.0'
     //EventBus
     implementation 'org.greenrobot:eventbus:3.0.0'
+    //微信依赖
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.0.2'
+    //支付宝
+    implementation(name: 'alipaySdk-15.7.5-20200422171619', ext: 'aar')
+    //悬浮窗
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:23.1.1'
+    //swipe
+    implementation 'com.yanzhenjie:recyclerview-swipe:1.1.4'
+
 }

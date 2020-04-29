@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.commuity.WriteFilmActivity">
+    <ImageView
+        android:layout_height="@dimen/dp_20"
+        android:layout_width="@dimen/dp_20"
+        android:id="@+id/comeback"
+        android:background="@drawable/common_icon_back_n_xxhdpi"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/sp_20"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="@dimen/dp_40"
+        android:id="@+id/head"
+        android:layout_marginTop="@dimen/sp_10"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/name"
+        android:layout_marginLeft="@dimen/dp_220"
+        android:layout_marginTop="@dimen/dp_24"
+        android:textSize="@dimen/sp_14"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/num"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_60"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/rc"
+        android:layout_marginTop="@dimen/dp_90"/>
+
+
+    <RelativeLayout
+    android:layout_height="@dimen/dp_50"
+    android:layout_width="match_parent"
+    android:layout_alignParentBottom="true">
+
+    <EditText
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="@dimen/dp_220"
+        android:id="@+id/et"
+        android:background="@drawable/plback"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:paddingLeft="6dp"
+        android:layout_centerVertical="true"/>
+
+    <Button
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="wrap_content"
+        android:id="@+id/bt"
+        android:background="@drawable/style_login_btn"
+        android:layout_centerVertical="true"
+        android:textColor="#ffffff"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_alignParentRight="true"
+        android:text="发送"/>
+
+</RelativeLayout>
+</RelativeLayout>

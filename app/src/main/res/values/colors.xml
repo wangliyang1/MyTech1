@@ -4,4 +4,13 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="black_ed">#000706</color>
+    <color name="pink">#fff</color>
+
+    <color name="colorWhite">#ffffff</color>
+
+    <color name="colorBlack">#000000</color>
+
+    <color name="colorRed">#ff0000</color>
+
+    <color name="colorBlue">#319BEF</color>
 </resources>

@@ -8,16 +8,24 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.Gson;
+import com.wd.tech.R;
 import com.wd.tech.api.ApiService;
 import com.wd.tech.api.MyApp;
 import com.wd.tech.api.MyUrls;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.KeyStore;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -28,6 +36,7 @@ import okhttp3.Interceptor;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -50,6 +59,22 @@ public class NetUtil {
     }
 
     public NetUtil() {
+     /*   try {
+            //创建证书对象，方便管理证书数据
+            KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            keyStore.load(null);//初始化证书资源，首次是空
+
+            //校验证书，x.509协议，所有的证书都是通过x.509协议生成的
+            CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+            X509Certificate certificate = (X509Certificate) certificateFactory.generateCertificate(MyApp.mContext.getResources().openRawResource(R.raw.server));
+
+            //ssl协议入场，看看是不是符合ssl协议标准
+            SSLContext sc = SSLContext.getInstance("TLS");
+            //信任证书管理,这个是由我们自己生成的,信任我们自己的服务器证书
+            TrustManager tm = new MyTrustManager(certificate);
+            sc.init(null, new TrustManager[]{
+                    tm
+            }, null);*/
         File file = new File(MyApp.mContext.getCacheDir().getAbsolutePath(), "http");
         Cache cache=new Cache(file,1024*1024*10);
         //拦截器
@@ -69,6 +94,7 @@ public class NetUtil {
                             Request request = chain.request().newBuilder()
                                     .addHeader("userId", uid+"")
                                     .addHeader("sessionId", sid)
+                                    .addHeader("ak",1+"")
                                     .build();
                             return  chain.proceed(request);
                         }else {
@@ -84,7 +110,9 @@ public class NetUtil {
                 .writeTimeout(5, TimeUnit.SECONDS)
                 .connectTimeout(5, TimeUnit.SECONDS)
                 .build();
-
+        /*} catch (Exception e) {
+            LogUtils.e("SSL设置错误");
+        }*/
         //retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .client(okhttp)
@@ -266,6 +294,70 @@ public class NetUtil {
     //post有参
     public void postDoParams(String url, final Class cls, HashMap<String,Object> map, final ICallback iCallback){
         api.postDoParams(url,map).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Object o = new Gson().fromJson(string, cls);
+                            iCallback.onSuccess(o);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        iCallback.onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    //post file
+    public void postFileParams(String url, final Class cls, HashMap<String, RequestBody> map, final ICallback iCallback){
+        api.postFileParams(url,map).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Object o = new Gson().fromJson(string, cls);
+                            iCallback.onSuccess(o);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        iCallback.onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    public void postweixin(String url,final Class cls,String ak,String code,final ICallback iCallback){
+        api.postweixin(url,ak,code)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseBody>() {
                     @Override

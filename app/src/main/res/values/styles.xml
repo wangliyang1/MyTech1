@@ -10,5 +10,11 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+    <style parent="AppTheme" name="PicActivity">
 
+    <item name="windowNoTitle">true</item>
+
+    <item name="android:windowFullscreen">true</item>
+
+</style>
 </resources>

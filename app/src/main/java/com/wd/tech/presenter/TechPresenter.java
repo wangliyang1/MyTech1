@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class TechPresenter extends BasePresenter<IContract.IView> implements IContract.IPresenter {
 
@@ -49,8 +50,38 @@ public class TechPresenter extends BasePresenter<IContract.IView> implements ICo
     }
 
     @Override
+    public void postweixin(String url, String ak, String code, Class cls) {
+        techModel.postweixin(url, ak, code, cls, new IContract.IModelCallback() {
+            @Override
+            public void onSuccess(Object o) {
+                getView().onSuccess(o);
+            }
+
+            @Override
+            public void onFailure(Throwable e) {
+                getView().onFailure(e);
+            }
+        });
+    }
+
+    @Override
     public void doGetHeaderParams(String url, Class cls, Map<String, Object> map) {
         techModel.doGetHeaderParams(url, cls, map, new IContract.IModelCallback() {
+            @Override
+            public void onSuccess(Object o) {
+                getView().onSuccess(o);
+            }
+
+            @Override
+            public void onFailure(Throwable e) {
+                getView().onFailure(e);
+            }
+        });
+    }
+
+    @Override
+    public void postFileParams(String url, Class cls, HashMap<String, RequestBody> map) {
+        techModel.postFileParams(url, cls, map, new IContract.IModelCallback() {
             @Override
             public void onSuccess(Object o) {
                 getView().onSuccess(o);

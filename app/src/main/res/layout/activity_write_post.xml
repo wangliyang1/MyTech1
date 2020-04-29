@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.commuity.WritePostActivity">
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/comeback"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:textSize="@dimen/sp_14"
+        android:text="取消"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/publish"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textSize="@dimen/sp_14"
+        android:text="发表"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_alignParentRight="true"/>
+
+    <EditText
+        android:layout_height="@dimen/dp_200"
+        android:layout_width="match_parent"
+        android:id="@+id/ed_content"
+        android:textSize="@dimen/sp_10"
+        android:background="@drawable/infoselet"
+        android:gravity="start"
+        android:layout_margin="@dimen/dp_30"
+        android:paddingRight="@dimen/dp_20"
+        android:paddingLeft="@dimen/dp_20"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/num"
+        android:layout_marginTop="@dimen/dp_200"
+        android:text="0/300"
+        android:layout_marginRight="@dimen/dp_60"
+        android:layout_alignParentRight="true"/>
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_250"
+        android:background="#fff"
+        android:src="@drawable/common_nav_btn_add_n_hdpi" />
+</RelativeLayout>

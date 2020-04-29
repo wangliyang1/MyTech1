@@ -7,6 +7,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -49,7 +50,7 @@ public class ConsultDetailsActivity extends BaseActivity<TechPresenter> {
     @BindView(R.id.details_source)//资讯来源
             TextView detailsSource;
     @BindView(R.id.details_content)//资讯内容
-            TextView detailsContent;
+            WebView detailsContent;
     @BindView(R.id.details_plate)//资讯模块
             RecyclerView detailsPlate;
     @BindView(R.id.details_information)//资讯相关板块
@@ -90,6 +91,18 @@ public class ConsultDetailsActivity extends BaseActivity<TechPresenter> {
     ImageView detailsPayImage;
     @BindView(R.id.details_pay_bt)
     Button detailsPayBt;
+    @BindView(R.id.pay_one)
+    TextView payOne;
+    @BindView(R.id.pay_two)
+    TextView payTwo;
+    @BindView(R.id.pay_cancel)
+    ImageView payCancel;
+    @BindView(R.id.pay_jifen)
+    ImageView payJifen;
+    @BindView(R.id.pay_huiyuan)
+    ImageView payHuiyuan;
+    @BindView(R.id.details_pay_relalayout)
+    RelativeLayout detailsPayRelalayout;
     private int id;
     private ConsultDetailsBean.ResultBean result;
 
@@ -164,9 +177,16 @@ public class ConsultDetailsActivity extends BaseActivity<TechPresenter> {
             //来源
             detailsSource.setText(result.getSource());
             if (result.getReadPower() == 1) {//判断是否有阅读权限
-
+                String content = result.getContent();
                 //主题
-                detailsContent.setText(Html.fromHtml(result.getContent(), new MImageGetter(this, detailsContent), null));
+                detailsContent.getSettings().setJavaScriptEnabled(true);
+                content = content.replaceAll("&", "");
+                content = content.replaceAll("“", "\"");
+                content = content.replaceAll("<", "<");
+                content = content.replaceAll(">", ">");
+                content = content.replaceAll("\\n", "<br>");
+                content = content.replaceAll("<img", "<img width=\"100%\"");
+                detailsContent.loadDataWithBaseURL(null,content,"text/html","utf-8",null);
                 //所属板块
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
                 linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
@@ -240,6 +260,7 @@ public class ConsultDetailsActivity extends BaseActivity<TechPresenter> {
         if (o instanceof AddGreadBean) {//点赞
             if (TextUtils.equals("0000", ((AddGreadBean) o).getStatus())) {
                 Toast.makeText(this, "" + ((AddGreadBean) o).getMessage(), Toast.LENGTH_SHORT).show();
+
             } else {
                 Toast.makeText(this, "" + ((AddGreadBean) o).getMessage(), Toast.LENGTH_SHORT).show();
             }
@@ -254,7 +275,7 @@ public class ConsultDetailsActivity extends BaseActivity<TechPresenter> {
     private int zan = 1;
     private int xin = 1;
 
-    @OnClick({R.id.details_back, R.id.details_text, R.id.details_xiaoxi_image, R.id.details_zan_image, R.id.details_guan_image, R.id.details_fen_image, R.id.details_fabiao})
+    @OnClick({R.id.details_back, R.id.details_text, R.id.details_xiaoxi_image, R.id.details_zan_image, R.id.details_guan_image, R.id.details_fen_image, R.id.details_fabiao,R.id.pay_cancel, R.id.pay_jifen, R.id.pay_huiyuan})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.details_back://返回上一页面
@@ -282,7 +303,7 @@ public class ConsultDetailsActivity extends BaseActivity<TechPresenter> {
                     HashMap<String, Object> hashMap = new HashMap<>();
                     hashMap.put("infoId", id);
                     mPresenter.dltDoParams(MyUrls.CONSULT_CANCLE_GREAT, AddGreadBean.class, hashMap);
-                    result.setWhetherGreat(1);
+                    result.setWhetherGreat(2);
                 }
                 break;
             case R.id.details_guan_image:
@@ -302,7 +323,7 @@ public class ConsultDetailsActivity extends BaseActivity<TechPresenter> {
                     result.setWhetherCollection(2);
                 }
                 break;
-            case R.id.details_fen_image:
+            case R.id.details_fen_image://分享
 
                 break;
             case R.id.details_fabiao:
@@ -314,10 +335,26 @@ public class ConsultDetailsActivity extends BaseActivity<TechPresenter> {
                 detailsLie.setVisibility(View.VISIBLE);
                 detailsRelat.setVisibility(View.GONE);
                 break;
+            case R.id.pay_cancel://隐藏付费方式选择页面
+                detailsLie.setVisibility(View.VISIBLE);
+                detailsPayRelalayout.setVisibility(View.GONE);
+                break;
+            case R.id.pay_jifen://跳转到积分兑换页面
+                Intent intent = new Intent(this,PayIntegralActivity.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+                break;
+            case R.id.pay_huiyuan://跳转到购买会员页面
+                Intent intent1 = new Intent(this,PayVipActivity.class);
+                startActivity(intent1);
+                break;
         }
     }
 
     @OnClick(R.id.details_pay_bt)
     public void onViewClicked() {//点击弹出 付费框
+        detailsLie.setVisibility(View.GONE);
+        detailsPayRelalayout.setVisibility(View.VISIBLE);
     }
+
 }

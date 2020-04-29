@@ -14,12 +14,15 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.wd.tech.R;
+import com.wd.tech.api.MyApp;
 import com.wd.tech.api.MyUrls;
 import com.wd.tech.arc.LivenessActivity;
 import com.wd.tech.base.BaseActivity;
 import com.wd.tech.bean.LoginBean;
 import com.wd.tech.presenter.TechPresenter;
+import com.wd.tech.util.MD5Util;
 import com.wd.tech.util.RsaCoder;
 
 import java.util.HashMap;
@@ -87,6 +90,7 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
             sp.putInt("uid",result.getUserId());
             sp.commit();
             Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+            startActivity(this,MainActivity.class);
             finish();
         } else {
             Toast.makeText(this, "登录失败", Toast.LENGTH_SHORT).show();
@@ -132,10 +136,18 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
 
                 break;
             case R.id.login_weixin:
-                LivenessActivity.flag = 1;
-                startActivity(new Intent(LoginActivity.this, LivenessActivity.class));
+                if (!MyApp.mWxApi.isWXAppInstalled()){
+                    Toast.makeText(this, "您还未安装微信客户端", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                final SendAuth.Req req = new SendAuth.Req();
+                req.scope="snsapi_userinfo";
+                req.state="diandi_wx_login";
+                MyApp.mWxApi.sendReq(req);
                 break;
             case R.id.login_face:
+                LivenessActivity.flag = 1;
+                startActivity(new Intent(LoginActivity.this, LivenessActivity.class));
                 LivenessActivity.flag = 2;
                 startActivity(new Intent(LoginActivity.this, LivenessActivity.class));
                 break;

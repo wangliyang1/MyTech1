@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public interface IContract {
     interface IModelCallback<T>{
@@ -19,8 +20,11 @@ public interface IContract {
         void getNoParams(String url, Class cls);
         //get有参
         void getDoParams(String url, Class cls, HashMap<String, Object> map);
+        void postweixin(String url,String ak,String code,Class cls);
         //get Header入参
         void doGetHeaderParams(String url, Class cls, Map<String,Object> map);
+        //post file
+        void postFileParams(String url, Class cls, HashMap<String, RequestBody> map);
         //post 头像
         void postDoHeadPic(String url, Class cls, MultipartBody.Part image);
         //post无参
@@ -49,6 +53,8 @@ public interface IContract {
         void postNoParams(String url, Class cls, IModelCallback iModelCallback);
         //post有参
         void postDoParams(String url, Class cls, HashMap<String, Object> map, IModelCallback iModelCallback);
+        //post file
+        void postFileParams(String url, Class cls,HashMap<String, RequestBody> map,IModelCallback iModelCallback);
         //put无参
         void putNoParams(String url, Class cls, IModelCallback iModelCallback);
         //put有参
@@ -57,5 +63,7 @@ public interface IContract {
         void dltNoParams(String url, Class cls, IModelCallback iModelCallback);
         //dlt有参
         void dltDoParams(String url, Class cls, HashMap<String, Object> map, IModelCallback iModelCallback);
+
+        void postweixin(String url,String ak,String code,Class cls,IModelCallback iModelCallback);
     }
 }

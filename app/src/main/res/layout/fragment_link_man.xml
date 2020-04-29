@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <EditText
+        android:drawableLeft="@mipmap/common_nav_btn_search_n_hdpi"
+        android:drawablePadding="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_10"
+        android:layout_width="@dimen/dp_300"
+        android:background="@drawable/serch"
+        android:layout_height="@dimen/dp_30"
+        android:id="@+id/query"
+        android:hint="搜索"
+        android:layout_marginTop="@dimen/dp_10"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_10"
+        android:drawablePadding="@dimen/dp_10"
+        android:text="群组"
+        android:gravity="center_vertical"
+        android:drawableLeft="@mipmap/nav_btn_setting_n_hdpi"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_height="match_parent"
+        android:id="@+id/linkManRc"/>
+
+</LinearLayout>
