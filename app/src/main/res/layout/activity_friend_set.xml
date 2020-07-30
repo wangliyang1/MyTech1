@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.info.FriendSetActivity">
+    <ImageView
+        android:layout_height="@dimen/dp_24"
+        android:layout_width="@dimen/dp_24"
+        android:id="@+id/comeBack"
+        android:src="@drawable/common_icon_back_n_xxhdpi"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/sp_14"
+        android:text="聊天设置"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_50"
+        android:layout_width="@dimen/dp_50"
+        android:id="@+id/head"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_60"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/name"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_120"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/bei"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_180"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_210"
+        android:textSize="@dimen/sp_12"
+        android:text="分组"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_260"
+        android:text="查询聊天记录"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/clear"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_300"
+        android:text="清空聊天记录"/>
+
+    <Button
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="@dimen/dp_300"
+        android:id="@+id/delete"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/sp_14"
+        android:text="删除好友"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:background="@drawable/btn_clear"
+        android:layout_alignParentBottom="true"
+        android:textColor="#fff"/>
+</RelativeLayout>

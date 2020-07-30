@@ -44,5 +44,95 @@ public interface MyUrls {
 
     //消息
     String Friend_Notice = "chat/verify/v1/findFriendNoticePageList" ;
+    //查询好友通知
+    String BASE_FRIEND_NOTICE="chat/verify/v1/findFriendNoticePageList";
+    //查询分组
+    String BASE_FIND_ALLGROUP="chat/verify/v1/findFriendGroupList";
+    //查询分组下所有好友信息
+    String BASE_FINDMAN_BYGROUP="chat/verify/v1/findFriendListByGroupId";
+    //查询我的好友列表 get searchName
+    String BASE_FIND_FRIEND="chat/verify/v1/searchFriend";
+    //删除好友聊天记录
+    String BASE_DELETE_FRIENDINFO="chat/verify/v1/deleteChatRecord";
+    //根据手机号
+    String BASE_SEUSER_BYPHONE="user/verify/v1/findUserByPhone";
+    //查询好友信息
+    String BASE_FRIENDINFO_ID="user/verify/v1/queryFriendInformation";
+    //查询好友对话记录
+    String BASE_CHAT="chat/verify/v1/findDialogueRecordPageList";
+    //查询好友聊天记录
+    String BASE_CHATHISTORY="chat/verify/v1/findChatRecordPageList";
+    //发送消息
+    String BASE_SEND_MSG="chat/verify/v1/sendMessage";
+    //删除好友
+    String BASE_DELETE_FRIEND="chat/verify/v1/deleteFriendRelation";
+    //删除好友聊天记录
+    String BASE_DELETE_HISTORY="chat/verify/v1/deleteChatRecord";
+    //创建群聊
+    String BASE_CREATE_GROUP="group/verify/v1/createGroup";
+    //查询所有加入的群组
+    String BASE_ALLGROUPS="group/verify/v1/findUserJoinedGroup";
+    //查看群组聊天记录
+    String BASE_GROUP_HISTORY="group/verify/v1/findGroupChatRecordPage";
+    //查询群组详细信息
+    String BASE_GROUP_DETAILS="group/verify/v1/findGroupInfo";
+    //退出群组
+    String BASE_BACK_GROUP="group/verify/v1/retreat";
+    //解散群组
+    String BASE_DELETE_GROUP="group/verify/v1/disbandGroup";
+    //修改群简介
+    String BASE_UPDATE_JIANJIE="group/verify/v1/modifyGroupDescription";
+    //申请进群
+    String BASE_ADD_GROUP="group/verify/v1/applyAddGroup";
+    //群通知
+    String BASE_GROUP_NOTICE="group/verify/v1/findGroupNoticePageList";
+    //审核群申请
+    String BASE_AUDIT="group/verify/v1/reviewGroupApply";
+    //检测是否是我的好友
+    String BASE_ISFRIEND="chat/verify/v1/checkMyFriend";
+    //添加好友
+    String BASE_ADD_FRIEND="chat/verify/v1/addFriend";
+    //查询群组所有用户
+    String BASE_QUERY_ALLUSERS="group/verify/v1/findGroupMemberList";
+    //调整群成员角色
+    String BASE_UPDATE_GROUP="group/verify/v1/modifyPermission";
+    //移除群成员
+    String BASE_DETELE_GROUPUSER="group/verify/v1/removeGroupMember";
+    //邀请加群
+    String BASE_INVITE_GROUP="group/verify/v1/inviteAddGroup";
 
+
+    //我的
+    //我的帖子
+    String MY_Post = "community/verify/v1/findMyPostById";
+    //删除帖子
+    String DELETE_POST = "community/verify/v1/deletePost";
+    //我的收藏
+    String Base_Info_Collection="user/verify/v1/findAllInfoCollection";
+    //我的关注
+    String Base_Find_Follow="user/verify/v1/findFollowUserList";
+    //我的通知
+    String Base_Tong_Zhi="tool/verify/v1/findSysNoticeList";
+    //根据用户id查询信息
+    String BASE_BYID = "user/verify/v1/getUserInfoByUserId";
+    //查询用户任务列表
+    String TASK_LIST = "user/verify/v1/findUserTaskList";
+    //做任务
+    String DO_TASK = "user/verify/v1/doTheTask";
+    //签到
+    String USER_SIGN = "user/verify/v1/userSign";
+    //当天签到状态
+    String FIND_USER_SIGN = "user/verify/v1/findUserSignStatus";
+    //查询当月签到日期
+    String FIND_RECORDING = "user/verify/v1/findUserSignRecording";
+    //查询连续签到日期
+    String SIGN_DAY = "user/verify/v1/findContinuousSignDays";
+    //绑定微信
+    String BIND_WX = "user/verify/v1/bindWeChat";
+    //查询是否绑定微信
+    String BING_WX_CHAT = "user/verify/v1/whetherToBindWeChat";
+    //查询用户积分
+    String USER_INTEGRAL = "user/verify/v1/findUserIntegral";
+    //用户积分详情
+    String USER_RECORD = "user/verify/v1/findUserIntegralRecord";
 }

@@ -57,7 +57,7 @@ public class ChannelActivity extends BaseActivity<TechPresenter> {
 
     @Override
     protected void initView() {
-
+        getSupportActionBar().hide();
     }
 
     @Override

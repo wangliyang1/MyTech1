@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.info.GroupSetActivity">
+    <ImageView
+        android:layout_height="@dimen/dp_200"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:src="@drawable/yindao"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_24"
+        android:layout_width="@dimen/dp_24"
+        android:src="@drawable/whiteback"
+        android:layout_marginTop="@dimen/dp_20"
+        android:id="@+id/comeBack"
+        android:layout_marginLeft="@dimen/dp_20"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_80"
+        android:layout_width="@dimen/dp_80"
+        android:layout_marginTop="@dimen/dp_140"
+        android:id="@+id/head"
+        android:layout_marginRight="@dimen/dp_50"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/dp_170"
+        android:id="@+id/no_name"
+        android:layout_marginRight="@dimen/dp_160"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/colorWhite"/>
+
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp_260"
+        android:id="@+id/no_main"
+        android:visibility="gone"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:id="@+id/no_chengyuan">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:text="群成员"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/no_num"
+        android:layout_marginRight="@dimen/dp_50"
+        android:layout_alignParentRight="true"
+        android:text="共1人"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_24"
+        android:layout_width="@dimen/dp_24"
+        android:src="@drawable/rightpoint"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:id="@+id/no_tongzhi">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:text="群通知"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_24"
+        android:layout_width="@dimen/dp_24"
+        android:src="@drawable/rightpoint"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
+
+    <TextView
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:text="查询聊天记录"
+        android:paddingLeft="@dimen/dp_20"/>
+
+    <Button
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="@dimen/dp_300"
+        android:layout_marginTop="@dimen/dp_200"
+        android:id="@+id/no_bt"
+        android:textColor="@color/colorWhite"
+        android:text="退出群组"
+        android:background="@drawable/red"/>
+
+</LinearLayout>
+
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp_260"
+        android:id="@+id/do_main"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:id="@+id/do_chengyuan">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:text="群成员"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/do_num"
+        android:layout_marginRight="@dimen/dp_50"
+        android:layout_alignParentRight="true"
+        android:text="共1人"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_24"
+        android:layout_width="@dimen/dp_24"
+        android:src="@drawable/rightpoint"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
+
+    <TextView
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:id="@+id/do_name"
+        android:gravity="center_vertical"
+        android:text="春夏秋冬"
+        android:paddingLeft="@dimen/dp_20"/>
+
+
+    <RelativeLayout
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:id="@+id/do_jianjie">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:text="群简介"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_24"
+        android:layout_width="@dimen/dp_24"
+        android:src="@drawable/rightpoint"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:id="@+id/do_tongzhi">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:text="群通知"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_24"
+        android:layout_width="@dimen/dp_24"
+        android:src="@drawable/rightpoint"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:id="@+id/do_guanli">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:text="群管理"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_24"
+        android:layout_width="@dimen/dp_24"
+        android:src="@drawable/rightpoint"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
+
+    <TextView
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:text="查看聊天记录"
+        android:paddingLeft="@dimen/dp_20"/>
+
+    <Button
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="@dimen/dp_300"
+        android:layout_marginTop="@dimen/dp_50"
+        android:id="@+id/do_bt"
+        android:textColor="@color/colorWhite"
+        android:text="解散群组"
+        android:background="@drawable/red"/>
+
+</LinearLayout>
+</RelativeLayout>

@@ -131,6 +131,7 @@ public class PayVipActivity extends BaseActivity<TechPresenter> {
 
     @Override
     protected void initView() {
+        getSupportActionBar().hide();
         SharedPreferences sp = getSharedPreferences("login.dp", MODE_PRIVATE);
         uid = sp.getInt("uid", -1);
         mPresenter.getNoParams(MyUrls.FIND_VIP_COMMODITY, FindVipBean.class);

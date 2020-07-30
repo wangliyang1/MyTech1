@@ -23,8 +23,7 @@ import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 
 public interface ApiService {
-    @GET
-        //get无参
+    @GET//get无参
     Observable<ResponseBody> getNoParams(@Url String url);
     @GET //get有参
     Observable<ResponseBody> getDoParams(@Url String url, @QueryMap HashMap<String, Object> map);
@@ -35,7 +34,6 @@ public interface ApiService {
     @Multipart
     Observable<ResponseBody> postDoHeadPic(@Url String url, @Part MultipartBody.Part img);
     @POST //post无参
-    @FormUrlEncoded
     Observable<ResponseBody> postNoParams(@Url String url);
     @POST//post文件
     @Multipart
@@ -52,8 +50,7 @@ public interface ApiService {
     @PUT//put 无参
     @FormUrlEncoded
     Observable<ResponseBody> putNoParams(@Url String url);
-    @DELETE
-        //dlt 无参
+    @DELETE//dlt 无参
     Observable<ResponseBody> dltNoParams(@Url String url);
     @DELETE //dlt 有参
     Observable<ResponseBody> dltDoParams(@Url String url, @QueryMap HashMap<String, Object> map);

@@ -3,6 +3,7 @@ package com.wd.tech.view.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -26,12 +27,26 @@ import com.wd.tech.api.MyUrls;
 import com.wd.tech.base.BaseActivity;
 import com.wd.tech.base.IActivity;
 import com.wd.tech.base.WXBean;
+import com.wd.tech.bean.my.DeletePostBean;
+import com.wd.tech.bean.my.DoTaskBean;
+import com.wd.tech.bean.my.FindSingRecordingBean;
+import com.wd.tech.bean.my.UserInfoBean;
 import com.wd.tech.presenter.TechPresenter;
+import com.wd.tech.util.GlideUtils;
 import com.wd.tech.util.MD5Util;
+import com.wd.tech.view.activity.my.GuanZhuActivity;
+import com.wd.tech.view.activity.my.IntegralActivity;
+import com.wd.tech.view.activity.my.MyDateActivity;
+import com.wd.tech.view.activity.my.MyPostActivity;
+import com.wd.tech.view.activity.my.SheActivity;
+import com.wd.tech.view.activity.my.ShoCangActivity;
+import com.wd.tech.view.activity.my.TaskListActivity;
+import com.wd.tech.view.activity.my.TongZhiActivity;
 import com.wd.tech.view.fragment.CommunityFragment;
 import com.wd.tech.view.fragment.ConsultFragment;
 import com.wd.tech.view.fragment.InfoFragment;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -49,11 +64,11 @@ public class MainActivity extends BaseActivity<TechPresenter> {
     LinearLayout ll;
     @BindView(R.id.bgz)
     ImageView bgz;
-    @BindView(R.id.headPic1)
+    @BindView(R.id.headPic1)//头像
     ImageView headPic1;
-    @BindView(R.id.name)
+    @BindView(R.id.name)//昵称
     TextView name;
-    @BindView(R.id.dersign)
+    @BindView(R.id.dersign)//个性签名
     TextView dersign;
     @BindView(R.id.shou)
     LinearLayout shou;
@@ -81,6 +96,10 @@ public class MainActivity extends BaseActivity<TechPresenter> {
     RadioButton rb3;
     @BindView(R.id.rg)
     RadioGroup rg;
+    @BindView(R.id.sing_image)//签到图片
+    ImageView sing_image;
+    @BindView(R.id.sign)//签到
+    TextView sign;
     @BindView(R.id.login_iv)
     ImageView loginIv;
     @BindView(R.id.login)
@@ -156,7 +175,19 @@ public class MainActivity extends BaseActivity<TechPresenter> {
                 rg.check(rg.getChildAt(2).getId());
                 vp.setCurrentItem(2);
             }
+            String task = intent.getStringExtra("task");
+            if (TextUtils.equals("123",task)){
+                vp.setCurrentItem(2);
+            }
+            String code = intent.getStringExtra("code");
+            Toast.makeText(this, ""+code, Toast.LENGTH_SHORT).show();
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("code",code);
+            mPresenter.postDoParams(MyUrls.BIND_WX, DeletePostBean.class,map);//绑定
+            mPresenter.postweixin(MyUrls.LOGIN_WX_URL,"123",code,WXBean.class);//登录
+
         }
+
     }
 
     @Override
@@ -191,15 +222,18 @@ public class MainActivity extends BaseActivity<TechPresenter> {
 
             }
         });
+
         SharedPreferences sp = getSharedPreferences("login.dp", MODE_PRIVATE);
         boolean b = sp.getBoolean("b", false);
         if (b) {
             ll.setVisibility(View.GONE);
             rl.setVisibility(View.VISIBLE);
-            String headPic = sp.getString("headPic", "");
-            String nickName = sp.getString("nickName", "");
-            Glide.with(this).load(headPic).circleCrop().into(headPic1);
-            name.setText(nickName);
+            int uid = sp.getInt("uid", -1);
+            String sid = sp.getString("sid", "");
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("userId", uid);
+            map.put("sessionId", sid);
+            mPresenter.doGetHeaderParams(MyUrls.BASE_BYID, UserInfoBean.class, map);
         } else {
             ll.setVisibility(View.VISIBLE);
             rl.setVisibility(View.GONE);
@@ -221,13 +255,38 @@ public class MainActivity extends BaseActivity<TechPresenter> {
 
     }
 
-    @OnClick({R.id.login_iv, R.id.login})
+    @OnClick({R.id.login_iv, R.id.login,R.id.shou,R.id.guan,R.id.tie,R.id.tong,R.id.ji,R.id.ren,R.id.she,R.id.sing_image})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login_iv:
                 break;
-            case R.id.login:
+            case R.id.login://进入登录页面
                 startActivity(this,LoginActivity.class);
+                break;
+            case R.id.shou://我的收藏
+                startActivity(this, ShoCangActivity.class);
+                break;
+            case R.id.guan://我的关注
+                startActivity(this, GuanZhuActivity.class);
+                break;
+            case R.id.tie://我的帖子
+                startActivity(this, MyPostActivity.class);
+                break;
+            case R.id.tong://我的通知
+                startActivity(this, TongZhiActivity.class);
+                break;
+            case R.id.ji://我的积分
+                startActivity(this, IntegralActivity.class);
+                break;
+            case R.id.ren://我的任务
+                startActivity(this, TaskListActivity.class);
+                break;
+            case R.id.she://我的设置
+                startActivity(this, SheActivity.class);
+                break;
+            case R.id.sing_image:
+                //查询当月签到的日期
+                mPresenter.getNoParams(MyUrls.FIND_RECORDING, FindSingRecordingBean.class);
                 break;
         }
     }
@@ -241,6 +300,21 @@ public class MainActivity extends BaseActivity<TechPresenter> {
             edit.putInt("uid",result.getUserId());
             edit.commit();
             Toast.makeText(this, "微信登录成功"+((WXBean) o).getResult().getNickName(), Toast.LENGTH_SHORT).show();
+        }
+        if (o instanceof UserInfoBean && TextUtils.equals("0000", ((UserInfoBean) o).getStatus())) {
+            UserInfoBean.ResultBean result = ((UserInfoBean) o).getResult();
+            GlideUtils.getCiclePhoto(result.getHeadPic(), headPic1);
+            dersign.setText(result.getSignature() + "");
+            name.setText(result.getNickName()+"");
+        }
+        if (o instanceof FindSingRecordingBean && TextUtils.equals("0000",((FindSingRecordingBean) o).getStatus())){
+            List<String> result = ((FindSingRecordingBean) o).getResult();
+            Intent intent = new Intent(this,MyDateActivity.class);
+            intent.putExtra("tmd",(Serializable) result);
+            startActivity(intent);
+        }
+        if(o instanceof DeletePostBean){
+
         }
     }
 

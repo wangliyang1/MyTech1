@@ -53,7 +53,7 @@ public class ConsultSearchActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        getSupportActionBar().hide();
     }
 
     @Override

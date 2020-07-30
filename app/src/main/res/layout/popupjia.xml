@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="@dimen/dp_100"
+    android:background="#999"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="@dimen/dp_100"
+        android:orientation="horizontal"
+        android:id="@+id/add_friend"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/nav_icon_add_friend_n_hdpi"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加好友或群"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="@dimen/dp_100"
+        android:orientation="horizontal"
+        android:id="@+id/create_group"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/nav_icon_add_friend_n_hdpi"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="创建群聊"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+</LinearLayout>

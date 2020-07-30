@@ -69,6 +69,7 @@ public class CommUserActivity extends BaseActivity<TechPresenter> {
             map.put("page",1);
             map.put("count",10);
             mPresenter.getDoParams(MyUrls.BASE_USER_COM, CommUserBean.class,map);
+            mPresenter.getDoParams(MyUrls.BASE_USER_COM, CommUser0Bean.class,map);
         }
         changePic();
     }
@@ -90,7 +91,7 @@ public class CommUserActivity extends BaseActivity<TechPresenter> {
 
     @Override
     public void onSuccess(Object o) {
-        if (o instanceof CommUser0Bean &&TextUtils.equals("0000",((CommUser0Bean) o).getStatus())){
+        if (o instanceof CommUser0Bean&&TextUtils.equals("0000",((CommUser0Bean) o).getStatus())){
             List<CommUser0Bean.ResultBean> result = ((CommUser0Bean) o).getResult();
             communityUserVo = result.get(0).getCommunityUserVo();
             UserFollowAdapter followAdapter = new UserFollowAdapter(communityUserVo);
@@ -133,7 +134,6 @@ public class CommUserActivity extends BaseActivity<TechPresenter> {
         }
         if (o instanceof CommUserBean&& TextUtils.equals("0000",((CommUserBean) o).getStatus())){
             List<CommUserBean.ResultBean> result = ((CommUserBean) o).getResult();
-
             CommUserAdapter adapter = new CommUserAdapter(result.get(0).getCommunityUserPostVoList());
             adapter.setOnClickListener(new CommUserAdapter.OnClickListener() {
                 @Override

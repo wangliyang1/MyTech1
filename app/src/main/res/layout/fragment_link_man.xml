@@ -4,31 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center_horizontal">
 
-    <EditText
-        android:drawableLeft="@mipmap/common_nav_btn_search_n_hdpi"
-        android:drawablePadding="@dimen/dp_10"
-        android:paddingLeft="@dimen/dp_10"
-        android:layout_width="@dimen/dp_300"
-        android:background="@drawable/serch"
-        android:layout_height="@dimen/dp_30"
-        android:id="@+id/query"
-        android:hint="搜索"
-        android:layout_marginTop="@dimen/dp_10"/>
     <TextView
-        android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
-        android:layout_marginTop="@dimen/dp_10"
-        android:paddingLeft="@dimen/dp_10"
-        android:drawablePadding="@dimen/dp_10"
-        android:text="群组"
-        android:gravity="center_vertical"
-        android:drawableLeft="@mipmap/nav_btn_setting_n_hdpi"/>
-    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_height="match_parent"
-        android:id="@+id/linkManRc"/>
+        android:gravity="center_vertical"
+        android:drawableLeft="@drawable/nav_btn_setting_n_hdpi"
+        android:id="@+id/qunzu"
+        android:text="群组"
+        android:drawablePadding="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/qunrc"
+        android:visibility="gone"/>
+
+    <ExpandableListView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/linkManRc"
+        android:layout_marginTop="@dimen/dp_10"/>
 
 </LinearLayout>

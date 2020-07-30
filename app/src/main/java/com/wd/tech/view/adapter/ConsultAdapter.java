@@ -83,9 +83,11 @@ public class ConsultAdapter extends RecyclerView.Adapter<ConsultAdapter.Viewhold
                 if (resultBean.getWhetherAdvertising() == 1) {
                     RecommendListBean.ResultBean.InfoAdvertisingVoBean infoAdvertisingVo = resultBean.getInfoAdvertisingVo();
                     int id = infoAdvertisingVo.getId();
-                    listener.onItemClick(id + "");
+                    String content = infoAdvertisingVo.getContent();
+                    String url = infoAdvertisingVo.getUrl();
+                    listener.onItemClick(id + ",1"+","+content+","+url);
                 } else {
-                    listener.onItemClick(resultBean.getId() + "");
+                    listener.onItemClick(resultBean.getId() + ",2");
                 }
             }
         });

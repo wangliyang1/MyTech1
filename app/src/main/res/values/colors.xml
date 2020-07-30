@@ -13,4 +13,10 @@
     <color name="colorRed">#ff0000</color>
 
     <color name="colorBlue">#319BEF</color>
+
+    <color name="gray_normal">#666667</color>
+
+    <color name="blue">#0383EE</color>
+
+    <color name="ren_in">#ff5737</color>
 </resources>

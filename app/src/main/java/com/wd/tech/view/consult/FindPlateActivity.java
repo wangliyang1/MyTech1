@@ -35,6 +35,7 @@ public class FindPlateActivity extends BaseActivity<TechPresenter> {
 
     @Override
     protected void initView() {
+        getSupportActionBar().hide();
         mPresenter.getNoParams(MyUrls.CONSULT_FIND_PLATE, FindPlaterBean.class);
     }
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -88,12 +89,12 @@ public class SearchActivity extends BaseActivity {
             }
         });
         searchJieTab.setupWithViewPager(searchJiePager);
-
+        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void initView() {
-
+        getSupportActionBar().hide();
     }
 
     @Override

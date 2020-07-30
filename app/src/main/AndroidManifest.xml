@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.wd.tech">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -8,6 +9,32 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Optional. Required for location feature -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="com.wd.tech.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
         android:name=".api.MyApp"
@@ -17,7 +44,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.commuity.WritePostActivity"></activity>
+        <activity android:name=".view.activity.RenLianActivity"></activity>
+        <activity android:name=".view.activity.info.InviteActivity" />
+        <activity android:name=".view.activity.info.UpdateDesionActivity" />
+        <activity android:name=".view.activity.info.InformActivity" />
+        <activity android:name=".view.activity.info.GroupHumanActivity" />
+        <activity android:name=".view.activity.info.GroupSetActivity" />
+        <activity android:name=".view.activity.info.GroupChatActivity" />
+        <activity android:name=".view.activity.info.FriendSetActivity" />
+        <activity android:name=".view.activity.info.AddFriendActivity" />
+        <activity android:name=".view.activity.info.AddGroupActivity" />
+        <activity android:name=".view.activity.info.UserInfoMsActivity" />
+        <activity android:name=".view.activity.info.CreateGroupActivity" />
+        <activity android:name=".view.activity.info.InfoSelefriendActivity" />
+        <activity android:name=".view.activity.info.ChatMsgActivity" />
+        <activity android:name=".view.activity.my.IntegralActivity" />
+        <activity android:name=".view.consult.WebActivity" />
+        <activity android:name=".view.activity.my.MyDateActivity" />
+        <activity android:name=".view.activity.my.MyActivity" />
+        <activity android:name=".view.activity.my.TaskListActivity" />
+        <activity android:name=".view.activity.my.SheActivity" />
+        <activity android:name=".view.activity.my.TongZhiActivity" />
+        <activity android:name=".view.activity.my.GuanZhuActivity" />
+        <activity android:name=".view.activity.my.ShoCangActivity" />
+        <activity android:name=".view.activity.my.MyPostActivity" />
+        <activity android:name=".view.activity.commuity.WritePostActivity" />
         <activity android:name=".view.activity.commuity.CommUserActivity" />
         <activity android:name=".view.activity.commuity.WriteFilmActivity" />
         <activity android:name=".view.consult.PayVipActivity" />
@@ -29,14 +80,14 @@
         <activity android:name=".view.consult.ConsultDetailsActivity" />
         <activity android:name=".view.activity.RegisterActivity" />
         <activity android:name=".view.activity.StartActivity" />
-        <activity android:name=".view.activity.LoginActivity">
+        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.MainActivity"></activity>
         <activity android:name=".arc.LivenessActivity" />
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -44,6 +95,18 @@
         <activity
             android:name=".wxapi.WXPayEntryActivity"
             android:exported="true" />
+
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:process=":multiprocess"
+            tools:node="replace" />
+        <service
+            android:name=".view.activity.info.SendService"
+            android:process=":pushcore">
+            <intent-filter>
+                <action android:name="cn.jiguang.user.service.action" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

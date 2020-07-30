@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.wd.tech.R;
+import com.wd.tech.api.MyApp;
 import com.wd.tech.api.MyUrls;
 import com.wd.tech.base.BaseActivity;
 import com.wd.tech.bean.LoginBean;
@@ -21,6 +22,8 @@ import java.util.regex.Pattern;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.api.BasicCallback;
 
 public class RegisterActivity extends BaseActivity<TechPresenter> {
 
@@ -33,6 +36,9 @@ public class RegisterActivity extends BaseActivity<TechPresenter> {
     EditText registerPwd;
     @BindView(R.id.register_bt)
     Button registerBt;
+
+    private String name;
+    private String phone;
     String PHONE = "^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$";
     @Override
     protected void initData() {
@@ -41,7 +47,7 @@ public class RegisterActivity extends BaseActivity<TechPresenter> {
 
     @Override
     protected void initView() {
-
+        getSupportActionBar().hide();
     }
 
     @Override
@@ -63,6 +69,29 @@ public class RegisterActivity extends BaseActivity<TechPresenter> {
     public void onSuccess(Object o) {
         if (o instanceof RegisterBean && TextUtils.equals("0000", ((RegisterBean) o).getStatus())) {
             Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
+            //注册极光
+            JMessageClient.register(phone, MyApp.s1, new BasicCallback() {
+                @Override
+                public void gotResult(int i, String s) {
+                    switch (i) {
+                        case 0:
+                            Toast.makeText(RegisterActivity.this, "极光注册成功", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 898001:
+                            Toast.makeText(RegisterActivity.this, "极光用户名已存在", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 871301:
+                            Toast.makeText(RegisterActivity.this, "极光密码格式错误", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 871304:
+                            Toast.makeText(RegisterActivity.this, "极光密码错误", Toast.LENGTH_SHORT).show();
+                            break;
+                        default:
+                            Toast.makeText(RegisterActivity.this, s, Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                }
+            });
             startActivity(this,LoginActivity.class);
             finish();
         } else {
@@ -77,8 +106,8 @@ public class RegisterActivity extends BaseActivity<TechPresenter> {
 
     @OnClick(R.id.register_bt)
     public void onViewClicked() {
-        String name = registerName.getText().toString().trim();
-        String phone = registerPhone.getText().toString().trim();
+        name = registerName.getText().toString().trim();
+        phone = registerPhone.getText().toString().trim();
         String pwd = registerPwd.getText().toString().trim();
         String s = null;
         try {

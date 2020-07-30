@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * date:2020/4/21
- * author:朱金茹(Lenovo)
+ * author:王黎杨(Lenovo)
  * function:查询用户的好友通知记录
  */
 public class FriendNoticeBean {

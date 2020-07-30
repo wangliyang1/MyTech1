@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.info.CreateGroupActivity">
+    <ImageView
+        android:layout_height="@dimen/dp_24"
+        android:layout_width="@dimen/dp_24"
+        android:src="@drawable/common_icon_back_n_xxhdpi"
+        android:id="@+id/comeback"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_30"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        android:text="创建群聊"
+        android:textSize="@dimen/sp_14"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_1"
+        android:background="#999"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp_80"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_100"
+        android:layout_width="@dimen/dp_100"
+        android:src="@drawable/quncreate"
+        android:layout_marginTop="@dimen/dp_150"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="@dimen/dp_200"
+        android:id="@+id/groupName"
+        android:layout_marginTop="@dimen/dp_270"
+        android:layout_centerHorizontal="true"
+        android:hint="填写群名称(2-10)个汉字"/>
+
+    <EditText
+        android:layout_height="@dimen/dp_150"
+        android:background="@drawable/plback"
+        android:layout_width="@dimen/dp_280"
+        android:id="@+id/groupDirsion"
+        android:layout_marginTop="@dimen/dp_330"
+        android:layout_centerHorizontal="true"
+        android:hint="介绍下你的群吧,让更多人加入"
+        android:gravity="start"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/dp_240"
+        android:text="100字以内"
+        android:layout_marginBottom="@dimen/dp_150"
+        android:layout_alignParentBottom="true"/>
+
+    <Button
+        android:layout_height="@dimen/dp_40"
+        android:background="@drawable/style_login_btn"
+        android:layout_width="@dimen/dp_300"
+        android:id="@+id/create"
+        android:text="创建"
+        android:textSize="@dimen/sp_18"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/colorWhite"/>
+</RelativeLayout>

@@ -23,6 +23,7 @@ import com.wd.tech.R;
 import com.wd.tech.api.MyUrls;
 import com.wd.tech.base.BaseActivity;
 import com.wd.tech.bean.community.CommunityZanBean;
+import com.wd.tech.bean.my.DoTaskBean;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.util.RxPartMapUtils;
 import com.wd.tech.view.activity.MainActivity;
@@ -100,6 +101,9 @@ public class WritePostActivity extends BaseActivity<TechPresenter> {
     public void onSuccess(Object o) {
         if (o instanceof CommunityZanBean && TextUtils.equals("0000",((CommunityZanBean) o).getStatus())){
             Toast.makeText(this, ((CommunityZanBean) o).getMessage(), Toast.LENGTH_SHORT).show();
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("taskId",1003);
+            mPresenter.postDoParams(MyUrls.DO_TASK, DoTaskBean.class,map);
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("bb",true);
             startActivity(intent);

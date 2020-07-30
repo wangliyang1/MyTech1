@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.info.AddGroupActivity">
+
+    <RelativeLayout
+        android:layout_height="@dimen/dp_50"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:id="@+id/re">
+
+    <ImageView
+        android:layout_height="@dimen/dp_15"
+        android:layout_width="@dimen/dp_15"
+        android:id="@+id/comeBack"
+        android:background="@drawable/common_icon_back_n_xxhdpi"
+        android:layout_marginLeft="@dimen/dp_10"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="申请加群"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/send"
+        android:text="发送"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_10"/>
+
+</RelativeLayout>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/me"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:text="备注信息"
+        android:layout_below="@+id/re"/>
+
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/me">
+
+    <EditText
+        android:layout_height="@dimen/dp_100"
+        android:layout_width="match_parent"
+        android:gravity="start"
+        android:id="@+id/et"
+        android:background="@drawable/plback"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="30字"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/dp_60"/>
+
+</RelativeLayout>
+</RelativeLayout>

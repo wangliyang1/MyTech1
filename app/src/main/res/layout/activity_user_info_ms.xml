@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.info.UserInfoMsActivity">
+    <ImageView
+        android:layout_height="@dimen/dp_260"
+        android:layout_width="match_parent"
+        android:src="@drawable/userinfoback"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="编辑"
+        android:id="@+id/write"
+        android:textSize="@dimen/sp_14"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="@dimen/dp_50"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_alignParentRight="true"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_80"
+        android:layout_width="@dimen/dp_80"
+        android:id="@+id/head"
+        android:layout_marginTop="@dimen/dp_200"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/name"
+        android:layout_marginTop="@dimen/dp_210"
+        android:layout_marginLeft="@dimen/dp_230"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/fen"
+        android:layout_marginTop="@dimen/dp_210"
+        android:layout_toRightOf="@id/name"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_40"
+        android:background="@drawable/vpi"
+        android:layout_width="@dimen/dp_24"
+        android:id="@+id/vpi"
+        android:layout_marginTop="@dimen/dp_236"
+        android:layout_marginLeft="@dimen/dp_260"
+        android:visibility="gone"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/content"
+        android:layout_marginTop="@dimen/dp_300"
+        android:layout_centerHorizontal="true"/>
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp_400"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="---------个人资料---------"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="女(1995-02-16)"
+        android:id="@+id/birthDay"
+        android:layout_marginTop="@dimen/dp_10"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="132****6490"
+        android:id="@+id/phone"
+        android:layout_marginTop="@dimen/dp_10"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="sfasdfs@163.com"
+        android:id="@+id/email"
+        android:layout_marginTop="@dimen/dp_10"/>
+
+</LinearLayout>
+
+    <Button
+        android:layout_height="@dimen/dp_40"
+        android:background="@drawable/style_login_btn"
+        android:layout_width="@dimen/dp_260"
+        android:text="发消息"
+        android:id="@+id/bt"
+        android:textColor="@color/colorWhite"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

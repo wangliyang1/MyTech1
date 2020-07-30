@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#fff"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/title"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_2"
+        android:background="#666"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:textSize="@dimen/sp_18"
+        android:textColor="@color/colorRed"
+        android:gravity="center"
+        android:id="@+id/dl"
+        android:text="删除好友"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_2"
+        android:background="#666"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:text="取消"
+        android:gravity="center"
+        android:id="@+id/cancel"
+        android:textSize="@dimen/sp_18"/>
+</LinearLayout>

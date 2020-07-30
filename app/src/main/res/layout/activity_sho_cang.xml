@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.my.ShoCangActivity">
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_height="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:background="@color/colorWhite">
+
+    <ImageView
+        android:layout_height="@dimen/dp_20"
+        android:layout_width="@dimen/dp_20"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:src="@drawable/common_icon_back_n_xxhdpi"
+        android:id="@+id/back"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        android:text="我的收藏"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_20"
+        android:layout_width="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_10"
+        android:src="@mipmap/logo_xhdpi"
+        android:id="@+id/delete"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_10"/>
+
+</RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/recycler"/>
+</LinearLayout>

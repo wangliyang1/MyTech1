@@ -44,6 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/dp_20"
                 app:pointsVisibility="false"
+                app:isClipChildrenMode="true"
+                app:clipChildrenLeftRightMargin="@dimen/dp_20"
                 android:layout_height="@dimen/dp_160"
                 android:id="@+id/consult_xbanner"></com.stx.xhb.androidx.XBanner>
             <TextView

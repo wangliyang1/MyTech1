@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.info.InformActivity">
+    <ImageView
+        android:layout_height="@dimen/dp_24"
+        android:layout_width="@dimen/dp_24"
+        android:background="@drawable/common_icon_back_n_xxhdpi"
+        android:id="@+id/comeBack"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="群通知"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/sp_16"/>
+
+    <ImageView
+        android:layout_height="@dimen/dp_1"
+        android:layout_width="match_parent"
+        android:background="#eee"
+        android:layout_marginTop="@dimen/dp_60"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="match_parent"
+        android:layout_width="@dimen/dp_300"
+        android:id="@+id/rc"
+        android:layout_marginTop="@dimen/dp_70"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

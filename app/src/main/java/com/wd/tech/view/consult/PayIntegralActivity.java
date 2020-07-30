@@ -103,6 +103,7 @@ public class PayIntegralActivity extends BaseActivity<TechPresenter> {
 
     @Override
     protected void initView() {
+        getSupportActionBar().hide();
         Intent intent = getIntent();
         if (intent != null) {
             id = intent.getIntExtra("id", -1);

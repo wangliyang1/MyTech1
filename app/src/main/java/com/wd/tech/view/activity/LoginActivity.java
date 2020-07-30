@@ -31,6 +31,9 @@ import java.util.regex.Pattern;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.api.BasicCallback;
+
 /*
 * 账号 18531029738
 * 密码 w123456
@@ -60,6 +63,7 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
 
     @Override
     protected void initView() {
+        getSupportActionBar().hide();
         sp = getSharedPreferences("login.dp", MODE_PRIVATE).edit();
     }
 
@@ -85,6 +89,25 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
     public void onSuccess(Object o) {
         if (o instanceof LoginBean && TextUtils.equals("0000", ((LoginBean) o).getStatus())) {
             LoginBean.ResultBean result = ((LoginBean) o).getResult();
+            JMessageClient.login(result.getPhone(), MyApp.s1, new BasicCallback() {
+                @Override
+                public void gotResult(int i, String s) {
+                    switch (i) {
+                        case 801003:
+                            Toast.makeText(LoginActivity.this, "极光用户名不存在", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 871301:
+                            Toast.makeText(LoginActivity.this, "极光密码格式错误", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 801004:
+                            Toast.makeText(LoginActivity.this, "极光密码错误", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 0:
+                            Toast.makeText(LoginActivity.this, "极光登陆成功", Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                }
+            });
             sp.putBoolean("b",true);
             sp.putString("sid",result.getSessionId());
             sp.putInt("uid",result.getUserId());
@@ -146,10 +169,12 @@ public class LoginActivity extends BaseActivity<TechPresenter> {
                 MyApp.mWxApi.sendReq(req);
                 break;
             case R.id.login_face:
-                LivenessActivity.flag = 1;
+                Intent intent = new Intent(this, RenLianActivity.class);
+                startActivity(intent);
+               /*LivenessActivity.flag = 1;
                 startActivity(new Intent(LoginActivity.this, LivenessActivity.class));
                 LivenessActivity.flag = 2;
-                startActivity(new Intent(LoginActivity.this, LivenessActivity.class));
+                startActivity(new Intent(LoginActivity.this, LivenessActivity.class));*/
                 break;
         }
     }

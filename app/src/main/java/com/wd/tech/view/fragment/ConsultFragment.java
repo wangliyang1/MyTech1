@@ -25,6 +25,7 @@ import com.wd.tech.view.adapter.ConsultAdapter;
 import com.wd.tech.view.consult.ConsultDetailsActivity;
 import com.wd.tech.view.consult.ConsultSearchActivity;
 import com.wd.tech.view.consult.FindPlateActivity;
+import com.wd.tech.view.consult.WebActivity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -118,10 +119,18 @@ public class ConsultFragment extends BaseFragment<TechPresenter> {
             consultAdapter.setListener(new OnRecyclerItemClickListener() {
                 @Override
                 public void onItemClick(String s) {
-                    int i = Integer.parseInt(s);
-                    Intent intent = new Intent(getActivity(), ConsultDetailsActivity.class);
-                    intent.putExtra("id",i);
-                    startActivity(intent);
+                    String[] split = s.split(",");
+                    if (TextUtils.equals("1",split[1])){
+                        Intent intent = new Intent(getActivity(), WebActivity.class);
+                        intent.putExtra("content",split[2]);
+                        intent.putExtra("url",split[3]);
+                        startActivity(intent);
+                    }else {
+                        int i = Integer.parseInt(split[0]);
+                        Intent intent = new Intent(getActivity(), ConsultDetailsActivity.class);
+                        intent.putExtra("id",i);
+                        startActivity(intent);
+                    }
                 }
 
                 @Override

@@ -27,6 +27,7 @@ import com.wd.tech.bean.consult.AddCommendBean;
 import com.wd.tech.bean.consult.AddGreadBean;
 import com.wd.tech.bean.consult.ConsultDetailsBean;
 import com.wd.tech.bean.consult.FindCommentBean;
+import com.wd.tech.bean.my.DoTaskBean;
 import com.wd.tech.contract.OnRecyclerItemClickListener;
 import com.wd.tech.presenter.TechPresenter;
 import com.wd.tech.view.consult.adapter.FindCommentAdapter;
@@ -44,15 +45,15 @@ import butterknife.OnClick;
 public class ConsultDetailsActivity extends BaseActivity<TechPresenter> {
 
     @BindView(R.id.details_titie)//资讯标题
-            TextView detailsTitie;
+    TextView detailsTitie;
     @BindView(R.id.details_time)//咨询时间
-            TextView detailsTime;
+    TextView detailsTime;
     @BindView(R.id.details_source)//资讯来源
-            TextView detailsSource;
+    TextView detailsSource;
     @BindView(R.id.details_content)//资讯内容
-            WebView detailsContent;
+    WebView detailsContent;
     @BindView(R.id.details_plate)//资讯模块
-            RecyclerView detailsPlate;
+    RecyclerView detailsPlate;
     @BindView(R.id.details_information)//资讯相关板块
             RecyclerView detailsInformation;
     @BindView(R.id.details_commentlist)//所有评论
@@ -131,6 +132,7 @@ public class ConsultDetailsActivity extends BaseActivity<TechPresenter> {
 
     @Override
     protected void initView() {
+        getSupportActionBar().hide();
         Intent intent = getIntent();
         if (intent != null) {
             //请求资讯数据
@@ -252,6 +254,9 @@ public class ConsultDetailsActivity extends BaseActivity<TechPresenter> {
                 hashMap.put("page", 1);
                 hashMap.put("count", 5);
                 mPresenter.getDoParams(MyUrls.CONSULT_FIND_COMMENT, FindCommentBean.class, hashMap);
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("taskId",1002);
+                mPresenter.postDoParams(MyUrls.DO_TASK, DoTaskBean.class,map);
             } else {
                 Toast.makeText(this, "" + ((AddCommendBean) o).getMessage(), Toast.LENGTH_SHORT).show();
             }
